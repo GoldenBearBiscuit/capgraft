@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "text.word_count",
+  "version": "v1",
+  "source": {
+    "name": "capgraft-local-example",
+    "revision": "v1",
+    "license": "MIT"
+  },
+  "friction_id": "FR-0007",
+  "friction": "重复在脚本中实现按空白分词的词数与字符数统计",
+  "input": {
+    "text": "str"
+  },
+  "output": {
+    "words": "int",
+    "characters": "int"
+  },
+  "tests": [
+    {
+      "name": "two_words",
+      "kind": "normal",
+      "origin": "agent",
+      "input": {
+        "text": "hello world"
+      },
+      "expect": {
+        "words": 2,
+        "characters": 11
+      }
+    },
+    {
+      "name": "empty_text_is_rejected",
+      "kind": "error",
+      "origin": "agent",
+      "input": {
+        "text": ""
+      },
+      "error": "ValueError"
+    },
+    {
+      "name": "punctuation_does_not_split",
+      "kind": "counterexample",
+      "origin": "agent",
+      "input": {
+        "text": "hello,world"
+      },
+      "expect": {
+        "words": 1,
+        "characters": 11
+      }
+    }
+  ]
+}

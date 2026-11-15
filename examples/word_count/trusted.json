@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "capability_id": "text.word_count",
+  "cases": [
+    {
+      "name": "trusted_normal",
+      "kind": "normal",
+      "origin": "agent",
+      "input": {
+        "text": "hello capgraft"
+      },
+      "expect": {
+        "words": 2,
+        "characters": 14
+      }
+    },
+    {
+      "name": "trusted_empty_is_rejected",
+      "kind": "error",
+      "origin": "agent",
+      "input": {
+        "text": ""
+      },
+      "error": "ValueError"
+    },
+    {
+      "name": "trusted_punctuation_boundary",
+      "kind": "counterexample",
+      "origin": "agent",
+      "input": {
+        "text": "hello,world"
+      },
+      "expect": {
+        "words": 1,
+        "characters": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# CapGraft 运行时状态目录（注册表/发布/审计），不入库
+.capgraft/
+__pycache__/
+*.pyc
